@@ -40,7 +40,7 @@
       <p> {{user.username| capitalize}} has no bio </p>
     {% endif %}
     {% if user == current_user %}
-    <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+    <a href="{{url_for('main.update_profile',uname=user.username)}}" class="btn btn-light" style="background-color:#6FACD8;">Edit profile</a>
 {% endif %}
 
   </div>

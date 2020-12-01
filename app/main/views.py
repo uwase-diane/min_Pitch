@@ -17,9 +17,9 @@ def index():
     music = Pitch.query.filter_by(category = 'music').all()
     religion = Pitch.query.filter_by(category = 'religion').all()
 
+    title = "Welcome to the page"
     
-    
-    return render_template('index.html',pitch = pitch, education = education, music = music, religion = religion)
+    return render_template('index.html',title = title ,pitch = pitch, education = education, music = music, religion = religion)
 
 @main.route('/new_pitch', methods = ['POST','GET'])
 
