@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block content %}
+<div class="container" id="allcomments">
+    {% if all_comments %}
+
+    
+    <div class="col-md-5 commentform  jumbotron" style="background-color:#e3f2fd;">
+        {{wtf.quick_form(form)}}
+    </div>
+    
+    {% for comment in all_comments %}
+    <div class="card col-md-5">
+        <div class="card-body">
+            <h3 class="card-title" style="font-weight: bold; color:#6FACD8;"> All comment for the Post</h3>
+            <h5>{{comment.pitch.title}}</h5>
+            <p class="card-title">{{comment.comment }}</p>
+            <p class="card-text">~~{{comment.user.username }}</p>
+        </div>
+    </div>
+    {% endfor %}
+
+    {%else%}
+    <div class="card ">
+        <div class="card-body">
+            <p class="card-title"> No Comments for this yet. be the first to comment</p>
+        </div>
+    </div>
+    <div class="col-md-5 ">
+        {{wtf.quick_form(form)}}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
