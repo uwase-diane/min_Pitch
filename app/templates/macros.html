@@ -1,0 +1,41 @@
+{% macro displayCategoryList(category_list) %}
+{% for category in category_list%}
+<div>
+    <a href="{{url_for('main.category',id=category.id)}}">
+        <p>{{category.cat_name|upper}}</p>
+    </a>
+</div>
+{% endfor %}
+{% endmacro %}
+{% macro display(piches) %}
+<div class="container-fluid">
+    <div class="row">
+        {% if piches %}
+        {% for category in piches %}
+        <div class="col-md-4">
+            <div class="thumbnail" id="carded">
+                <div class="card-body text-center">
+                    <p>Title: {{category.title}}</p>
+                    <p class="text-center">Category: {{category.category}}</p>
+                    <footer class="blockquote-footer text-center" style="color:black"> Posted by:
+                        {{category.user.username}}</footer><br>
+                    <div>
+                        <p><span class="foot"><span style="font-weight: bold; font-size: 12px;">Comment:</span> {{category.comment.count()}}</span>
+                        <span class="foot"><a href="{{url_for('main.like',id=category.id)}}"></a><span style="font-weight: bold; font-size: 12px;">like:</span> {{category.upvote.count()}}</span>
+                        <span class="foot"><a href="{{url_for('main.dislike',id=category.id)}}"></a><span style="font-weight: bold; font-size: 12px;">Dislike:</span> {{category.downvote.count()}}</span></p>
+                        <p><a href="{{url_for('main.comment',pitch_id=category.id)}}" class="btn btn-light btn-sm" style="background-color: #00DDE4; color: white; font-weight: bold;">Comment</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="card w-90 mb-3">
+            <div class="card-body">
+                <p class="card-title text-center"> Category has 0 posts</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
