@@ -1,6 +1,43 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
+{% import 'macros.html' as macro%}
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+ <script src="https://kit.fontawesome.com/83d474e45f.js" crossorigin="anonymous"></script>
+ {% endblock %}
+ {% block content%}
+ <div class="container" id="particles-js">
+    <ul class="nav nav-pills nav-justified nav-fill" role="tablist" style="padding-bottom: 20px;">
+        <br><br><br>
+    <li class="nav-item">
+        <a id="cats" class="nav-link" data-toggle="tab" style="background-color:#e3f2fd;" href="#religion" style="color: black"><strong>religion</strong></a><br>
+    </li>
+    <li class="nav-item">
+        <a id="cats" class="nav-link" data-toggle="tab" style="background-color:#e3f2fd;" href="#education" style="color: black"><strong>education</strong></a><br>
+    </li>
+    <li class="nav-item">
+        <a id="cats" class="nav-link" data-toggle="tab" style="background-color:#e3f2fd;" href="#music" style="color: black"><strong>music</strong></a><br>
+    </li>
+    </ul>
+    <hr>
+    <div class="tab-content">
+    <div class="container tab-pane active" id="religion" style="background-color:#e3f2fd;"><br>
 
-{% block content %}
+    {{macro.display(religion)}} 
+  </div>
 
-<h1>HELLO</h1>
- {% endblock%}
+    <div class="container tab-pane fade" id="education" style="background-color:#e3f2fd;"><br>
+
+    {{macro.display(education)}} 
+
+</div>
+     <div class="container tab-pane fade" id="music" style="background-color: #e3f2fd;"><br>
+
+    {{macro.display(music)}} 
+
+</div>
+
+
+   </div>
+</div>
+{% endblock %}
